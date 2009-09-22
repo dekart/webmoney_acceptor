@@ -11,6 +11,14 @@ module WebmoneyAcceptor
   end
 
   module ControllerExtension
+    def self.included(base)
+      base.helper_method :webmoney
+    end
+
+    def webmoney
+      @webmoney_acceptor ||= Acceptor.new(self)
+    end
+
     class Acceptor
       def initialize(controller)
         @controller = controller
@@ -58,10 +66,6 @@ module WebmoneyAcceptor
       def currency
         "wm#{params[:payee_purse].first.downcase}".to_sym
       end
-    end
-
-    def webmoney
-      @webmoney_acceptor ||= Acceptor.new(self)
     end
   end
 
