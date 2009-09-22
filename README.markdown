@@ -110,4 +110,4 @@ Installing the plugin
 Credits
 -------
 
-Written by Alex Dmitriev (http://railorz.ru)
+Written by [Alex Dmitriev](http://railorz.ru)
