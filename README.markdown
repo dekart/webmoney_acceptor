@@ -1,7 +1,7 @@
 Webmoney Acceptor
 ======================
 
-Small controller & view extension to ease WebMoney (http://merchant.webmoney.ru/)
+Small controller & view extension to ease [WebMoney](http://merchant.webmoney.ru/)
 payment processing.
 
 Usage
