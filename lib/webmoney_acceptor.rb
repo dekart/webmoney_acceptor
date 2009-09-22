@@ -17,6 +17,10 @@ module WebmoneyAcceptor
       end
 
       def valid_payment?(secret = nil)
+        secret = secret || params[:secret_key] || WebmoneyPayments.config["secret"]
+        
+        raise ArgumentError.new("WebMoney secret key is not provided") if secret.blank?
+
         params[:hash] = Digest::MD5.hexdigest(
           [
             params[:payee_purse],
@@ -26,7 +30,7 @@ module WebmoneyAcceptor
             params[:sys_invs_no],
             params[:sys_trans_no],
             params[:sys_trans_date],
-            (params[:secret_key] || secret || WebmoneyPayments.config["secret"]),
+            secret,
             params[:payer_purse],
             params[:payer_wm]
           ].join("")
@@ -66,6 +70,8 @@ module WebmoneyAcceptor
       options = args.extract_options!
       amount  = args.pop
       wallet  = args.first || WebmoneyPayments.config["wallet"]
+
+      raise ArgumentError.new("Webmoney wallet is not provided") if wallet.blank?
 
       result = form_tag("https://merchant.webmoney.ru/lmi/payment.asp", :method => "POST")
       result << hidden_field_tag(:LMI_PAYEE_PURSE, wallet)
