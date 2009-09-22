@@ -45,7 +45,7 @@ Usage
       end
     end
 
-  *Important:* Payment model is not provided by the plugin. You should create it by yourself.
+  **Important:** Payment model is not provided by the plugin. You should create it by yourself.
 
 3) Add acction to your routes:
 
@@ -93,8 +93,8 @@ In your controller:
 
 Some additional methods that can be useful:
 
-* *webmoney.currency* - currently used WebMoney currency (:wmr, :wmz, etc)
-* *webmoney.params* - a hash of WebMoney-related params (all params that start with "LMI_")
+* **webmoney.currency** - currently used WebMoney currency (:wmr, :wmz, etc)
+* **webmoney.params** - a hash of WebMoney-related params (all params that start with "LMI_")
 
 Testing
 -------
