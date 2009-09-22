@@ -1,7 +1,7 @@
 Webmoney Acceptor
 ======================
 
-Small controller & view extension to ease WebMoney (http://merchant.webmoney.ru/)
+Small controller & view extension to ease [WebMoney](http://merchant.webmoney.ru/)
 payment processing.
 
 Usage
@@ -12,12 +12,17 @@ Usage
     development:
       wallet: "R123456789012"
       secret: "mysupersecret123"
+    production:
+      wallet: "R098765432109"
+      secret: "myproductionsecret"
 
 2) Add new action to your payment controller:
 
     class PaymentsController < ApplicationController
       # Disable forgery protection for webmoney accepting action
       skip_before_filter :verify_authenticity_token, :only => :webmoney_payment
+
+      ...
 
       def webmoney_payment
         @payment = current_user.payments.build(
@@ -110,4 +115,4 @@ Installing the plugin
 Credits
 -------
 
-Written by Alex Dmitriev (http://railorz.ru)
+Written by [Alex Dmitriev](http://railorz.ru)
