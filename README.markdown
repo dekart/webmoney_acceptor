@@ -12,12 +12,17 @@ Usage
     development:
       wallet: "R123456789012"
       secret: "mysupersecret123"
+    production:
+      wallet: "R098765432109"
+      secret: "myproductionsecret"
 
 2) Add new action to your payment controller:
 
     class PaymentsController < ApplicationController
       # Disable forgery protection for webmoney accepting action
       skip_before_filter :verify_authenticity_token, :only => :webmoney_payment
+
+      ...
 
       def webmoney_payment
         @payment = current_user.payments.build(
